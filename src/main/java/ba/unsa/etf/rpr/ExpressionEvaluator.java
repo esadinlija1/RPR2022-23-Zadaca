@@ -18,6 +18,16 @@ public class ExpressionEvaluator {
             add("*");
             add("sqrt");
             add(String.valueOf(0));
+            add(String.valueOf(1));
+            add(String.valueOf(2));
+            add(String.valueOf(3));
+            add(String.valueOf(4));
+            add(String.valueOf(5));
+            add(String.valueOf(6));
+            add(String.valueOf(7));
+            add(String.valueOf(8));
+            add(String.valueOf(9));
+
         }
     };
 
@@ -37,13 +47,13 @@ public class ExpressionEvaluator {
                 else if (e.equals("sqrt")) ops.push(e);
                 else if (e.equals(")")) {
                     String op = ops.pop();
-                    double v = vals.pop();
-                    if (op.equals("+")) v = vals.pop() + v;
-                    else if (op.equals("-")) v = vals.pop() - v;
-                    else if (op.equals("*")) v = vals.pop() * v;
-                    else if (op.equals("/")) v = vals.pop() / v;
-                    else if (op.equals("sqrt")) v = Math.sqrt(v);
-                    vals.push(v);
+                    rez = vals.pop();
+                    if (op.equals("+")) rez = vals.pop() + rez;
+                    else if (op.equals("-")) rez = vals.pop() - rez;
+                    else if (op.equals("*")) rez = vals.pop() * rez;
+                    else if (op.equals("/")) rez = vals.pop() / rez;
+                    else if (op.equals("sqrt")) rez = Math.sqrt(rez);
+                    vals.push(rez);
                 }
                 else vals.push(Double.parseDouble(e));
             }
