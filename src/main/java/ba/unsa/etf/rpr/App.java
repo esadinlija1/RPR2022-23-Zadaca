@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr;
 
 /**
- * Hello world!
+ * App main class, in which we take arithemtic expression and calculate its value
  *
  */
 public class App 
