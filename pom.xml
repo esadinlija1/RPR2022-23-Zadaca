@@ -31,6 +31,12 @@
       <version>3.4.1</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>3.0.0-M6</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -97,10 +103,10 @@
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.2</version>
+        <version>3.0.0-M6</version>
         <configuration>
           <includes>
-            <include>ExpressionEvaluatorTest.java</include>
+            <include>**/ExpressionEvaluatorTest*.java</include>
           </includes>
         </configuration>
       </plugin>
