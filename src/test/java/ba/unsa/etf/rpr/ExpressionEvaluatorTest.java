@@ -53,4 +53,9 @@ public class ExpressionEvaluatorTest
     public void exceptionTest2(){
         assertThrows(RuntimeException.class, ()->{evaluator.evaluate("( 1 + (5 * 4 ) ");});
     }
+
+    @Test
+    public void bitMoreComplexTest(){
+        assertEquals(2.0,evaluator.evaluate("( sqrt ( sqrt 16 ) )"));
+    }
 }
