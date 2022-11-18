@@ -14,11 +14,8 @@ public class App
      */
     public static void main( String[] args )
     {
-
-        ExpressionEvaluator e=new ExpressionEvaluator();
-        //String s=args[0];
-        Scanner ulaz=new Scanner(System.in);
-        String s=ulaz.nextLine();
-        System.out.println(e.evaluate(s));
+        ExpressionEvaluator e=new ExpressionEvaluator(); //evaluator declaration
+        String s=args[0]; //get string from args, expression should be given with ""
+        System.out.println(e.evaluate(s)); //print returned result
     }
 }

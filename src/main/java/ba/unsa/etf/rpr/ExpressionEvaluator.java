@@ -32,7 +32,7 @@ public class ExpressionEvaluator {
             add(String.valueOf(9));
 
         }
-    };
+    };  //static list shared by all instances of class, saves memory resources from possible multiple list allocation
 
     /**
      * //method that checks if string returned from split method contains only digits, should help app to recognise multidigit numbers as valid
@@ -42,7 +42,7 @@ public class ExpressionEvaluator {
     private static boolean onlyDigits(String s){
         String regex = "[0-9]+";  //regex that describes range of allowed strings
         Pattern p = Pattern.compile(regex);
-        Matcher m=p.matcher(s);
+        Matcher m=p.matcher(s);  //check if string matches range set by regex
         return m.matches();
     }
 
@@ -69,18 +69,18 @@ public class ExpressionEvaluator {
         double rez = 0;
         for (String e : expression.split(" ")) {
 
-            if(!validString(e)){
+            if(!validString(e)){ //check if string is valid
                 throw new IllegalArgumentException("Expression not valid!");
-            }else {
+            }else {  //look for operators
                 if (e.equals("(")) ;
                 else if (e.equals("+")) ops.push(e);
                 else if (e.equals("-")) ops.push(e);
                 else if (e.equals("*")) ops.push(e);
                 else if (e.equals("/")) ops.push(e);
                 else if (e.equals("sqrt")) ops.push(e);
-                else if (e.equals(")")) {
-                    String op = ops.pop();
-                    rez = vals.pop();
+                else if (e.equals(")")) { //operations processing
+                    String op = ops.pop();  //get last operator from stack
+                    rez = vals.pop();  // get last value calculated
                     if (op.equals("+")) rez = vals.pop() + rez;
                     else if (op.equals("-")) rez = vals.pop() - rez;
                     else if (op.equals("*")) rez = vals.pop() * rez;
@@ -88,7 +88,7 @@ public class ExpressionEvaluator {
                     else if (op.equals("sqrt")) rez = Math.sqrt(rez);
                     vals.push(rez);
                 }
-                else vals.push(Double.parseDouble(e));
+                else vals.push(Double.parseDouble(e));  //if there isn't operation to be processed, push to stack string interpreted as double
             }
 
         }
