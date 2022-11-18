@@ -1,7 +1,11 @@
 package ba.unsa.etf.rpr;
 
+
+
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * This class has only one method, which implements Dijkstra algorithm for arithmetic expression evaluation
@@ -31,14 +35,26 @@ public class ExpressionEvaluator {
         }
     };
 
+    private static boolean onlyDigits(String s){  //method that checks if string returned from split method contains only digits, should help app to recognise multidigit numbers as valid
+        String regex = "[0-9]+";
+        Pattern p = Pattern.compile(regex);
+        Matcher m=p.matcher(s);
+        return m.matches();
+    }
+
+
+
     public double evaluate(String expression) {  //implementation of Dijsktra algortihm
         Stack<String> ops = new Stack<String>(); //stack containing operators in expression
         Stack<Double> vals = new Stack<Double>(); //stack containing values
         double rez = 0;
         for (String e : expression.split(" ")) {
-            if (!validexps.contains(e)) {
+            if (onlyDigits(e)==false ) {
                 throw new IllegalArgumentException("Expression not valid!");
-            } else {
+            }
+            if(!validexps.contains(e)){
+                throw new IllegalArgumentException("Expression not valid!");
+            }else {
                 if (e.equals("(")) ;
                 else if (e.equals("+")) ops.push(e);
                 else if (e.equals("-")) ops.push(e);
