@@ -4,6 +4,7 @@ package ba.unsa.etf.rpr;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Unit test for simple App.
@@ -41,5 +42,10 @@ public class ExpressionEvaluatorTest
         String s="( 1 + ( 5 * ( 4 * 5 ) ) )";
         double val=evaluator.evaluate("( 1 + ( 5 * 20 ) )");
         assertEquals(val,evaluator.evaluate(s));
+    }
+
+    @Test
+    public void basicExceptionTest(){
+        assertThrows(RuntimeException.class, ()->{evaluator.evaluate("(3*4)");});
     }
 }
