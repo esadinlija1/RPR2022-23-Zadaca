@@ -42,6 +42,12 @@ public class ExpressionEvaluator {
         return m.matches();
     }
 
+    private static boolean validString(String s){  //method to decide if string is valid, and based on that, if exception should or shouldn't be thrown
+        if(onlyDigits(s) || validexps.contains(s))
+            return true;
+        return false;
+    }
+
 
 
     public double evaluate(String expression) {  //implementation of Dijsktra algortihm
@@ -49,10 +55,8 @@ public class ExpressionEvaluator {
         Stack<Double> vals = new Stack<Double>(); //stack containing values
         double rez = 0;
         for (String e : expression.split(" ")) {
-            if (onlyDigits(e)==false ) {
-                throw new IllegalArgumentException("Expression not valid!");
-            }
-            if(!validexps.contains(e)){
+
+            if(!validString(e)){
                 throw new IllegalArgumentException("Expression not valid!");
             }else {
                 if (e.equals("(")) ;
