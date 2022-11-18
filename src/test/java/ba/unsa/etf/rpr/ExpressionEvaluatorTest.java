@@ -35,4 +35,11 @@ public class ExpressionEvaluatorTest
         String s="( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )";
         assertEquals(101.0,evaluator.evaluate(s));
     }
+
+    @Test
+    public void compareTwoExpressions(){
+        String s="( 1 + ( 5 * ( 4 * 5 ) ) )";
+        double val=evaluator.evaluate("( 1 + ( 5 * 20 ) )");
+        assertEquals(val,evaluator.evaluate(s));
+    }
 }
