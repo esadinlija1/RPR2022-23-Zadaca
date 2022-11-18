@@ -8,8 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * This class has only one method, which implements Dijkstra algorithm for arithmetic expression evaluation
- *
+ * Class that contains only one public method for string evaluation using Dijsktra algorithm
  */
 public class ExpressionEvaluator {
     private static ArrayList<String> validexps = new ArrayList<String>() {  //list containing valid expression returned by split method
@@ -35,13 +34,23 @@ public class ExpressionEvaluator {
         }
     };
 
-    private static boolean onlyDigits(String s){  //method that checks if string returned from split method contains only digits, should help app to recognise multidigit numbers as valid
-        String regex = "[0-9]+";
+    /**
+     * //method that checks if string returned from split method contains only digits, should help app to recognise multidigit numbers as valid
+     * @param s
+     * @return
+     */
+    private static boolean onlyDigits(String s){
+        String regex = "[0-9]+";  //regex that describes range of allowed strings
         Pattern p = Pattern.compile(regex);
         Matcher m=p.matcher(s);
         return m.matches();
     }
 
+    /**
+     * Method for string validation, uses onlyDigits to check if string has only numbers and checks if string is in validexps
+     * @param s
+     * @return
+     */
     private static boolean validString(String s){  //method to decide if string is valid, and based on that, if exception should or shouldn't be thrown
         if(onlyDigits(s) || validexps.contains(s))
             return true;
@@ -49,7 +58,11 @@ public class ExpressionEvaluator {
     }
 
 
-
+    /**
+     *Central method of class, evaluates expression using Dijsktra algorithm
+     * @param expression
+     * @return
+     */
     public double evaluate(String expression) {  //implementation of Dijsktra algortihm
         Stack<String> ops = new Stack<String>(); //stack containing operators in expression
         Stack<Double> vals = new Stack<Double>(); //stack containing values

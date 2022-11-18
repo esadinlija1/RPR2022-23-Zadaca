@@ -8,7 +8,10 @@ import java.util.Scanner;
  */
 public class App 
 {
-
+    /**
+     * Main method
+     * @param args
+     */
     public static void main( String[] args )
     {
 
