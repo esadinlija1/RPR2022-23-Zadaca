@@ -48,4 +48,9 @@ public class ExpressionEvaluatorTest
     public void basicExceptionTest(){
         assertThrows(RuntimeException.class, ()->{evaluator.evaluate("(3*4)");});
     }
+
+    @Test
+    public void exceptionTest2(){
+        assertThrows(RuntimeException.class, ()->{evaluator.evaluate("( 1 + (5 * 4 ) ");});
+    }
 }
